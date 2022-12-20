@@ -67,5 +67,68 @@ def get_high_season(df):
                      ((df['MES'] == 9) & ((df['DIA'] >= 11) & (df['DIA'] <= 30))))
     return high_season.astype(int)
 
+def train_base_model(model, X_train, y_train, X_val, y_val, features):
+    """    
+    Parameters:
+    model: a scikit-learn model
+    X_train: a Pandas dataframe with the training features
+    y_train: a Pandas series with the training target
+    X_val: a Pandas dataframe with the validation features
+    y_val: a Pandas series with the validation target
+    features: a list of strings with the names of the features to be used in the model
+    
+    Returns:
+    None
+    """
+    X_train = X_train[features]
+    X_val = X_val[features]
+
+    # Fit the model to the training data
+    model.fit(X_train, y_train)
+
+    # Make predictions for the training data
+    y_pred = model.predict(X_train)
+
+    # Evaluate the model on the validation data
+    y_pred_val = model.predict(X_val)
+
+    # Print the classification report
+    print('Train data report')
+    print(classification_report(y_train, y_pred))
+
+    print('Test data report')
+    print(classification_report(y_val, y_pred_val))
+
+    # Plot the confusion matrix
+    cm = confusion_matrix(y_val, y_pred_val)
+    sns.heatmap(cm, annot=True, fmt='d')
+    plt.title('Confusion matrix')
+    plt.ylabel('True label')
+    plt.xlabel('Predicted label')
+    plt.show()
+    return model
+
+
+def plot_feature_importance(model, X,  n_features=None):
+    # Get the feature importance
+    importance = model.coef_[0]
+    # Sort the features by their importance in descending order
+    sorted_idx = np.argsort(importance)[::-1]
+    # Select the top N features
+    if n_features:
+        top_N_idx = sorted_idx[:n_features]
+        importance = importance[top_N_idx]
+        X = X[X.columns[top_N_idx]]
+    # Summarize feature importance
+    for i, v in enumerate(importance):
+        print('Feature: %0d, Score: %.5f' % (i, v))
+    # Plot feature importance
+    plt.bar([x for x in range(len(importance))], importance)
+    # Add the names of the features
+    plt.xticks([x for x in range(len(importance))], X.columns, rotation=90)
+    # Add grid to the plot
+    plt.grid()
+    plt.show()
+
 
 

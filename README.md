@@ -24,3 +24,7 @@
 * SIGLADES: Destination city name. 
 
 
+### Data dictionaries: 
+
+destination_mapping = 'data/processed/destination_mapping_SCL.pkl'
+
