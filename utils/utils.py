@@ -41,3 +41,31 @@ def make_bar_plot(df, target, title, key_map={},color='#3B3B3B'):
     #plt.text(x=3, y=reference+0.1, s='Average', size=10)
     # Show the plot
     plt.show()
+
+
+
+
+def get_high_season(df):
+    """
+    Returns a boolean Series indicating which rows of a pandas DataFrame represent dates in the high season, based on the following criteria:
+    - MES is 12 and DIA is greater than or equal to 15
+    - MES is 1
+    - MES is 2
+    - MES is 3 and DIA is less than 3
+    - MES is 7 and DIA is between 15 and 31 (inclusive)
+    - MES is 9 and DIA is between 11 and 30 (inclusive)
+    
+    Parameters:
+    df (pandas.DataFrame): The DataFrame to be filtered.
+    
+    Returns:
+    pandas.Series: A boolean Series indicating which rows of the DataFrame represent dates in the high season.
+    """
+    high_season = (  ((df['MES'] == 12) & (df['DIA'] >= 15)) | 
+                      (df['MES'] == 1) | (df['MES'] == 2) | ((df['MES'] == 3) & (df['DIA'] < 3)  ) |
+                     ((df['MES'] == 7) & ((df['DIA'] >= 15) & (df['DIA'] <= 31))) |
+                     ((df['MES'] == 9) & ((df['DIA'] >= 11) & (df['DIA'] <= 30))))
+    return high_season.astype(int)
+
+
+
