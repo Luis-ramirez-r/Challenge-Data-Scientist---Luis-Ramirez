@@ -1,8 +1,31 @@
 # Challenge-Data-Scientist---Luis-Ramirez
 
+This repository contains all the code related to the analyses of flights delays
+
+## The structure of the repository is as follows: 
 
 
-### Variables description:
+- data
+  - raw
+  - interim
+  - processed
+- reports
+  - EDA_base_report.html
+  - EDA_mod_report.html
+- utils
+  - utils.py
+- README.md
+- solution.ipynb
+
+Where:
+
+* **solution.ipynb** is the main file 
+* **data/** contains the dataset at different stages of processing and the data dictionaries used to encode the categorical features  
+* **reports/** contains the reports created for the EDA 
+
+
+
+## Variables description:
 
 * Fecha-I: Scheduled date and time of the flight. 
 * Vlo-I : Scheduled flight number. 
@@ -22,23 +45,5 @@
 * OPERA : Name of the airline that operates. 
 * SIGLAORI: Name city of origin. 
 * SIGLADES: Destination city name. 
-
-
-### Data dictionaries: 
-
-destination_mapping = 'data/processed/destination_mapping_SCL.pkl'
-
-airline_mapping = 'data/processed/airline_mapping_SCL.pkl'
-
-airline_mapping_op = 'data/processed/airline_mapping_op_SCL.pkl'
-
-days_mapping = 'data/processed/days_mapping_SCL.json'
-
-months_mapping = 'data/processed/months_mapping_SCL.json'
-
-tipo_vuelo_mapping = 'data/processed/tipo_vuelo_mapping_SCL.json'
-
-period_day_mapping = 'data/processed/period_day_mapping_SCL.json'
-
 
 

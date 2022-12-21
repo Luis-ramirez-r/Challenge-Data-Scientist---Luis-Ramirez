@@ -95,11 +95,22 @@ def train_base_model(model, X_train, y_train, X_val, y_val, features):
     y_pred_val = model.predict(X_val)
 
     # Print the classification report
-    print('Train data report')
-    print(classification_report(y_train, y_pred))
 
-    print('Test data report')
-    print(classification_report(y_val, y_pred_val))
+    # print the recall score
+    print('Train recall score: ', recall_score(y_train, y_pred))
+    print('Test recall score: ', recall_score(y_val, y_pred_val),'\n')
+    
+    
+    # print the precision score
+    print('Train precision score: ', precision_score(y_train, y_pred))
+    print('Test precision score: ', precision_score(y_val, y_pred_val),'\n')
+
+
+    # print f1 score
+    print('Train f1 score: ', f1_score(y_train, y_pred))
+    print('Test f1 score: ', f1_score(y_val, y_pred_val),'\n')
+
+
 
     # Plot the confusion matrix
     cm = confusion_matrix(y_val, y_pred_val)
