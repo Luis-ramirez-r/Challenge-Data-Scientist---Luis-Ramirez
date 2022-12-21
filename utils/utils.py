@@ -3,6 +3,8 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
+from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, classification_report, confusion_matrix
+
 
 def make_bar_plot(df, target, title, key_map={},color='#3B3B3B'):
     """

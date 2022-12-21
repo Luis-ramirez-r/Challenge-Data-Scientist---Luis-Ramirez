@@ -28,3 +28,17 @@
 
 destination_mapping = 'data/processed/destination_mapping_SCL.pkl'
 
+airline_mapping = 'data/processed/airline_mapping_SCL.pkl'
+
+airline_mapping_op = 'data/processed/airline_mapping_op_SCL.pkl'
+
+days_mapping = 'data/processed/days_mapping_SCL.json'
+
+months_mapping = 'data/processed/months_mapping_SCL.json'
+
+tipo_vuelo_mapping = 'data/processed/tipo_vuelo_mapping_SCL.json'
+
+period_day_mapping = 'data/processed/period_day_mapping_SCL.json'
+
+
+
